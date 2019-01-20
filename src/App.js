@@ -1,28 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+  // src/App.js
+  import React, { Component } from 'react';
+  import './App.css';
+  import { Layout,Menu } from 'antd';
+  const {Header, Footer, Content,} = Layout;
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+  class App extends Component {
+    render() {
+      return (
+        <Layout style={{height:'100%'}}>
+        <Header className="header">
+      <div className="logo" />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px' }}
           >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+            <Menu.Item key="1">首页</Menu.Item>
+            <Menu.Item key="2">电影</Menu.Item>
+            <Menu.Item key="3">关于</Menu.Item>
+          </Menu>
+    </Header>
+        <Content>Content</Content>
+        <Footer style={{ textAlign: 'center' }}>
+              Ant Design ©2019 Created by Ant Yu
+        </Footer>
+      </Layout>
+      );
+    }
   }
-}
 
-export default App;
+  export default App;
