@@ -28,6 +28,26 @@
   margin: 16px 28px 16px 0;
   float: left;
 }
+.moviebox{
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+.movielistbox{
+  width: 180px;
+  text-align: center;
+  padding: 4px;
+  margin: 10px 5px;
+  border:1px solid #eee;
+  box-shadow:0 0 10px #bbb;
+  transition: all 0.2s
+}
+.movielistbox:hover{
+  box-shadow: rgba(0,0,0,0.3) 0px 19px 60px,rgba(0,0,0,0.22) 0px 15px 20px;
+}
+.lyheight{
+  height: 100%;
+}
 .App-link {
   color: #61dafb;
 }
@@ -39,4 +59,7 @@
   to {
     transform: rotate(360deg);
   }
+}
+#root{
+  height: 100%;
 }
