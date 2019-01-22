@@ -38,7 +38,6 @@ export default class MovieList extends Component{
     //组件的更新 componentWillReceiveProps 来更新组件的数据
     //数据的请求必须在 setstate 的回调函数中去调用
     componentWillReceiveProps(newprops){
-        console.log(newprops);
         //组件的state 重新赋值
         this.setState({
             type:newprops.match.params.type,
@@ -50,7 +49,6 @@ export default class MovieList extends Component{
     //数据请求的方法
     getList=()=>{
         let start=(this.state.currentPage-1)*this.state.count
-        console.log(start);
         let url=`https://api.douban.com/v2/movie/${this.state.type}?start=${start}&count=${this.state.count}}`
         //fetch 数据请求
         fetchJson(url)
@@ -66,7 +64,8 @@ export default class MovieList extends Component{
     render(){
         return(
             <div className='moviebox'>
-              { this.state.movieList.map(item=> <Moviebox {...item} key={item.id}/>)}
+            {/* 设置一个属性history 传递路由跳转,因为再详情页需要用到history 进行跳转*/}
+              { this.state.movieList.map(item=> <Moviebox {...item} key={item.id} history={this.props.history}/>)}
             </div>
         )
     }

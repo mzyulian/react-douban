@@ -3,7 +3,8 @@ import '../App.css'
 export default class Moviebox extends Component{
     render(props){
      return(
-         <div className='movielistbox'>
+         /* 跳转到电影详情 */
+         <div className='movielistbox' onClick={()=>{this.props.history.push(`/movie/detail/${this.props.id}`)}}>
              <div>
                <img src={this.props.images.medium} alt={this.props.title} style={{width:100,height:140}}/>
              </div>

@@ -4,6 +4,8 @@ import '../App.css';
 import {HashRouter as Router,Link,Route} from 'react-router-dom'
 //引入电影列表组件
 import MovieList from './MovieList.js'
+//引入电影详情组件
+import MovieDetail from './MovieDetail.js'
 //引入antd ui
 import {  Layout, Menu} from 'antd';
 const {  Content,Sider,Footer } = Layout;
@@ -37,6 +39,8 @@ export default class MovieContainer extends Component{
                 background: '#fff', padding: 24, margin: 0, minHeight: 280,paddingLeft:200,overflow: 'initial',paddingTop:64
               }}
               >
+              {/* 电影详情页 */}
+              <Route path='/movie/detail/:id' render={(props)=><MovieDetail {...props}/>}/>
               {/* 电影列表组件渲染,正在热映，即将上映，Top250渲染的组件布局差不多，统一渲染一个组件 */}
               <Route  path='/movie/:type/:currentpage' render={(props)=><MovieList {...props}/>}/>
               </Content>
