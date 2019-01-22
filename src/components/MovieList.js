@@ -17,9 +17,40 @@ export default class MovieList extends Component{
             total:0
         }
     }
-    //组件创建的时候数据请求
+    //组件创建的时候数据请求  componentWillMount 组件首次加载的时候会执行
     componentWillMount(){
+        // let start=(this.state.currentPage-1)*this.state.count
+        // console.log(start);
+        // let url=`https://api.douban.com/v2/movie/${this.state.type}?start=${start}&count=${this.state.count}}`
+        // //fetch 数据请求
+        // fetchJson(url)
+        // .then(res=>res.json())
+        // .then(res=>{
+        //     console.log(res)
+        //     this.setState({
+        //         movieList:res.subjects,
+        //         total:res.total
+        //     })
+        // })
+        //数据请求
+        this.getList()
+    }
+    //组件的更新 componentWillReceiveProps 来更新组件的数据
+    //数据的请求必须在 setstate 的回调函数中去调用
+    componentWillReceiveProps(newprops){
+        console.log(newprops);
+        //组件的state 重新赋值
+        this.setState({
+            type:newprops.match.params.type,
+            currentPage:newprops.match.params.currentpage,
+            movieList:[],
+            total:0
+        },()=>{this.getList()})
+    }
+    //数据请求的方法
+    getList=()=>{
         let start=(this.state.currentPage-1)*this.state.count
+        console.log(start);
         let url=`https://api.douban.com/v2/movie/${this.state.type}?start=${start}&count=${this.state.count}}`
         //fetch 数据请求
         fetchJson(url)
